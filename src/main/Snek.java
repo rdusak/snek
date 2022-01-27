@@ -61,10 +61,10 @@ class Grid extends JPanel {
         return new Dimension(700, 700);
     }
 
-    void paintCellFromState(int x, int y, Graphics2D g, Color c) {
+    void paintCellFromState(int x, int y, Color c) {
         int cellPadding = 1;
-        g.setColor(c);
-        g.fillRect(xOffset + x * cellWidth + cellPadding,
+        g2d.setColor(c);
+        g2d.fillRect(xOffset + x * cellWidth + cellPadding,
                 yOffset + y * cellHeight + cellPadding,
                 cellWidth - cellPadding , cellHeight - cellPadding);
     }
@@ -87,14 +87,14 @@ class Grid extends JPanel {
             y += cellHeight;
         }
         if (gs.powerup != null) {
-            paintCellFromState(gs.powerup.x, gs.powerup.y, g2d, Color.MAGENTA);
+            paintCellFromState(gs.powerup.x, gs.powerup.y, Color.MAGENTA);
         }
         for(var pos : gs.snake) {
             if (pos.equals(gs.powerup) && !pos.equals(gs.snake.get(0)))
                 continue;
-            paintCellFromState(pos.x, pos.y, g2d, Color.GREEN);
+            paintCellFromState(pos.x, pos.y, Color.GREEN);
         }
-        paintCellFromState(gs.pos_x(), gs.pos_y(), g2d, Color.orange);
+        paintCellFromState(gs.pos_x(), gs.pos_y(), Color.orange);
         g2d.dispose();
     }
 }
