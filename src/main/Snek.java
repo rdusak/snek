@@ -17,11 +17,9 @@ public class Snek {
 class GameWindow {
     public GameWindow(GameState state) {
         EventQueue.invokeLater(() -> {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-                ex.printStackTrace();
-            }
+            try {UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());} 
+            catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) 
+                    {ex.printStackTrace();}
             JFrame frame = new JFrame("snek");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.add(new Grid(state));
@@ -44,13 +42,7 @@ class Grid extends JPanel {
             while (!gs.quit) {
                 gs.moveSnake();
                 repaint();
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    break;
-                }
-
+                try {Thread.sleep(500);} catch (InterruptedException e) {e.printStackTrace();}
             }
         }).start();
         new Thread(() -> {
@@ -59,12 +51,7 @@ class Grid extends JPanel {
                     gs.powerup = new Pos(gs);
                 if (!gs.snake.contains(gs.powerup))
                     repaint();
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    break;
-                }
+                try {Thread.sleep(3000);} catch (InterruptedException e) {e.printStackTrace();}
             }
         }).start();
     }
@@ -166,10 +153,10 @@ class GameState {
     public void moveSnake(Dir dir, int step) {
         Pos old = new Pos(pos_x(), pos_y());
         switch (dir) { // head
-            case UP -> pos_y(pos_y() - step); //pos_y -= step;
-            case RIGHT -> pos_x(pos_x() + step);//pos_x += step;
-            case DOWN -> pos_y(pos_y() + step); //pos_y += step;
-            case LEFT -> pos_x(pos_x() - step);//pos_x -= step;
+            case UP -> pos_y(pos_y() - step);
+            case RIGHT -> pos_x(pos_x() + step);
+            case DOWN -> pos_y(pos_y() + step);
+            case LEFT -> pos_x(pos_x() - step);
         }
         if (pos_x() > width - 1) pos_x(0);
         if (pos_x() < 0)  pos_x(width - 1);
