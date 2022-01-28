@@ -18,3 +18,6 @@ Purple squares represent a powerup that extends the snake by 1 square.
 |`A`     | left     |
 |`S`     | down     |
 |`D`     | right    |
+|`Q`     | end      |
+
+![](./readme-imgs/screenshot.png)
