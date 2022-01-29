@@ -3,8 +3,8 @@ GUI for a game of snake
 
 # Compilation
 ```console
-javac -d "out" src/main/Snek.java
-java -cp "out" main.Snek
+$ javac -d "out" src/main/Snek.java
+$ java -cp "out" main.Snek
 ```
 # Usage
 Orange square represents the head of the snake.
